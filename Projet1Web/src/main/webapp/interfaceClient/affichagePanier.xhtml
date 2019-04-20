@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/interfaceClient/masterPageClient.xhtml">
+	<ui:define name="title">Panier</ui:define>
+
+	<ui:define name="content">
+
+		<h:head>
+		
+			<title>Panier</title>
+		
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css" href="/css/styleClient.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/panier.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
+		</h:head>
+		
+		<f:metadata>
+			<f:event listener="#{mbPanier.init()}"
+				type="preRenderView"></f:event>
+		</f:metadata>
+		
+		
+
+		<h:body>
+		
+		
+			<b:row  id="banner">
+						
+				<h3>Panier</h3>
+					
+			</b:row>
+			
+
+		
+			<h:form id="formPanier">
+			
+			<p:dialog header=""  widgetVar="notConnected" modal="true" height="100">
+   					 <h:outputText value="Merci de vous identifier ou de vous enregistrer pour valider votre commande." />
+			</p:dialog>
+			
+			<p:dialog header=""  widgetVar="quantiteInsuffisante" modal="true" height="100">
+   					 <h:outputText value="Quantité disponible insuffisante pour l'article suivant: #{mbPanier.articleEnRupture}" />
+			</p:dialog>   
+
+				<b:container layout="fluid">
+		
+					<b:dataTable 
+						id="datatablePanier"
+						value="#{mbPanier.articlesCommandes}"
+						var="articleCommande" 
+						pdf="false" 
+						print="false" 
+						excel="false"
+						border="true" 
+						info="false" 
+						page-length="20" 
+						select="false"
+						responsive="true"
+						paginated="false">
+
+
+						<b:dataTableColumn label="">
+				
+							<b:commandButton id="btn_supprimer" value="" look="danger"
+									action="#{mbPanier.supprimerArticle(articleCommande)}">
+							<b:image value="../pics/icones/deleteWhite21.png"/>	
+								
+							</b:commandButton>
+							<h:graphicImage
+								value="/pics/articlesImages/#{articleCommande.article.imageMini}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn label="Articles">
+				
+							<h:outputLabel value="#{articleCommande.article.nom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn label="Quantité">
+							
+							<p:spinner id="minMax" value="#{articleCommande.quantite}" min="1" max="999" size="4" />
+							<b:commandButton value="" look="secondary" action="#{mbPanier.rafraichirPanier()}">
+							<b:image value="../pics/icones/refreshGreen24.png"/>
+							</b:commandButton>
+							<br/>
+							<br/>
+							<h:outputLabel  value="Total: #{articleCommande.prixTotal} €" />
+						</b:dataTableColumn>
+					
+					</b:dataTable>
+					
+
+					
+					<div id="boutonBas">
+            
+		
+		            <b:button value="Retour au Catalogue" look="warning" outcome="catalogueClient"/>
+		            
+		           
+		                
+		                  <b:inputText value="#{mbPanier.calculerPanier()} €"
+		                    disabled="true" fieldSize="lg">
+		                    <f:facet name="prepend">
+		                      <h:outputText value="Total à payer: " />
+		                    </f:facet>
+		                  </b:inputText>
+		                
+		            
+		              
+		            <f:facet name="header">Payer</f:facet>
+		            <b:commandButton value="Payer" look="warning" action="#{mbPanier.payer()}"/>
+		            </div>
+		         
+				</b:container>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Reporting</ui:define>
+
+	<ui:define name="content">
+
+		<h:head>
+
+			<title>Articles en quantité limitée ou en rupture</title>
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+
+		</h:head>
+		
+		<h:body>
+			<b:row id="banner">
+				<h3>Stocks limités</h3>
+			</b:row>
+			<b:container>
+			
+				
+					
+					<b:dataTable 
+						id="datatableStocks" 
+						value="#{mbAccueilAdmin.stockRupture}" 
+						var="stock" 
+						pdf="false"
+						print="false" 
+						excel="false" 
+						border="true" 
+						info="false"
+						page-length="20" 
+						selectionMode="single" 
+						responsive="true"
+						paginated="false">
+
+						<b:dataTableColumn
+							headerStyle="text-align: center;vertical-align: middle;">
+							<f:facet name="header">Image: </f:facet>
+							<h:graphicImage
+								value="/pics/articlesImages/#{stock.article.imageMini}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Articles: </f:facet>
+							<h:outputLabel value="#{stock.article.nom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Quantités en stock: </f:facet>
+							<h:outputLabel value="#{stock.quantiteDispoPhysique}" />
+						</b:dataTableColumn>
+					</b:dataTable>
+					
+					
+					</b:container>
+					
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>
+		

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Accueil admin</ui:define>
+
+	<ui:define name="content">
+		<h:head>
+			<title>Accueil admin</title>
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdminMorad.css" />
+			
+			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>	
+						
+			
+				
+		</h:head>
+		
+		<h:body>
+
+<div id="infoJS">
+	<h:outputText id="nbArticlePeremption" value="#{mbAccueilAdmin.approvisionnementsPeremption.size()}" />
+	<h:outputText id="nbArticleRupture" value="#{mbAccueilAdmin.approvisionnementsRupture.size()}" />
+	<h:outputText id="commandesAtraiter" value="#{mbAccueilAdmin.commandesEnAttente.size()}" />
+</div>
+
+<div id="charts">
+		
+		<div>
+			<h5>Mes Articles en fin de Vie</h5>
+			<div id="peremption"></div>
+			<b:button id="btnLienPeremption" look="success" value="Aller aux Articles en Péremption" size="lg" href="#{request.contextPath}/interfaceAdmin/articlesPeremption.xhtml"/>
+		</div>
+		
+		<div>
+			<h5>Mes Articles en Rupture</h5>
+			<div id="rupture"></div>
+			<b:button id="btnLienRupture" look="success" value="Aller aux Articles en Rupture" size="lg" href="#{request.contextPath}/interfaceAdmin/articlesRupture.xhtml"/>
+		</div>
+		
+		<div>
+			<h5>Mes Commandes en attentes</h5>
+			<div id="compteur"></div>
+			<b:button id="btnLienReporting" look="success" value="Aller aux Commandes à Traiter" size="lg" href="#{request.contextPath}/interfaceAdmin/moteurRechercheCommandesATraiter.xhtml"/>
+		</div>	
+</div>
+
+
+
+
+
+<script type="text/javascript" src="#{request.contextPath}/js/accueilAdmin.js"></script>
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>

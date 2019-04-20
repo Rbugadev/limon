@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/interfaceClient/masterPageClient.xhtml">
+	<ui:define name="title">Mon compte</ui:define>
+
+	<ui:define name="content">			
+		<h:head>
+			<title>Compte client</title>
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css" href="/css/styleClient.css" />
+			<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/panier.css" />
+			<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/gestionCompte.css" />
+		</h:head>
+		<h:body>
+				
+				<f:metadata>
+					<f:event listener="#{mbGererCompteClient.init()}"
+						type="preRenderView"></f:event>
+				</f:metadata>
+				
+						<b:row id="banner">
+								<h3 id="titre1">Mon compte</h3>
+						</b:row>
+						<br />
+						<br />
+				
+				
+				<h:form id="formGestionCompteClient">	
+				<b:container id="gestionCompte" layout="fluid">
+					
+						<b:row>
+							<h:messages />
+						</b:row>
+				<br />
+						<br />
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+								<h:outputLabel value="Prénom :" for="prenom" />
+							</b:column>
+
+							<b:column tiny-screen="6" medium-screen="3" large-screen="3">
+								<h:inputText id="prenom" required="true"
+									requiredMessage="Prénom obligatoire"
+									value="#{mbGererCompteClient.client.prenom}">
+								</h:inputText>
+							</b:column>
+						
+							<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+								<h:outputLabel value="Nom :" for="nom" />
+							</b:column>
+
+							<b:column tiny-screen="6" medium-screen="3" large-screen="3">
+								<h:inputText id="nom" required="true"
+									requiredMessage="Nom obligatoire"
+									value="#{mbGererCompteClient.client.nom}" />
+							</b:column>
+						</b:row>
+						<br />
+
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+								<h:outputLabel value="Date de naissance :" for="dateNaissance" />
+							</b:column>
+
+							<b:column tiny-screen="6" medium-screen="3" large-screen="2">
+								<b:formGroup>
+									<b:dateTimePicker format="DD.MM.YYYY" fieldSize="md"
+										margin-bottom="5px" placeholder="Date de naissance"
+										value="#{mbGererCompteClient.client.dateDeNaissance}"
+										iconPosition='left' />
+								</b:formGroup>
+							</b:column>
+						</b:row>
+						<br />
+
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+								<h:outputLabel value="Téléphone :" for="telephone" />
+							</b:column>
+
+							<b:column tiny-screen="6" medium-screen="3" large-screen="3">
+								<h:inputText id="telephone"
+									value="#{mbGererCompteClient.client.numeroFixe}" />
+							</b:column>
+						
+							<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+								<h:outputLabel value="Portable :" for="portable" />
+							</b:column>
+
+							<b:column tiny-screen="6" medium-screen="3" large-screen="3">
+								<h:inputText id="portable"
+									value="#{mbGererCompteClient.client.numeroPort}" />
+							</b:column>
+						</b:row>
+						<br />
+
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+								<h:outputLabel value="Email :" for="email" />
+							</b:column>
+
+							<b:column tiny-screen="12" medium-screen="9" large-screen="10">
+								<h:inputText id="email" required="true"
+									requiredMessage="Email obligatoire"
+									value="#{mbGererCompteClient.client.email}" />
+							</b:column>
+						</b:row>
+						<br />
+
+
+
+
+						<div id="adresse">
+						<!-- adresse domicile -->
+						<fieldset id="fieldset1">
+							<legend>domicile</legend>
+							<b:row >
+								<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+									<h:outputLabel value="Adresse 1 :" for="adresse1" />
+								</b:column>
+
+								<b:column tiny-screen="12" medium-screen="9" large-screen="3">
+									<h:inputText id="adresse1" required="true"
+										requiredMessage="Adresse obligatoire"
+										value="#{mbGererCompteClient.client.adresse}" />
+								</b:column>
+							</b:row>
+							<br />
+
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+									<h:outputLabel value="Adresse 2 :" for="adresse2" />
+								</b:column>
+
+								<b:column tiny-screen="12" medium-screen="9" large-screen="3">
+									<h:inputText id="adresse2"
+										value="#{mbGererCompteClient.client.complementAdresse}" />
+								</b:column>
+							</b:row>
+							<br />
+
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+									<h:outputLabel value="Ville :" for="ville" />
+								</b:column>
+
+								<b:column tiny-screen="12" medium-screen="9" large-screen="4">
+									<b:selectOneMenu id="ville" required="false"
+										requiredMessage="Ville obligatoire"
+										value="#{mbGererCompteClient.client.ville}">
+										<f:selectItem itemLabel="Ville" itemValue=""
+											noSelectionOption="true" />
+										<f:selectItems value="#{mbGererCompteClient.villes}"
+											required="true" requiredMessage="Ville obligatoire"
+											var="ville" itemValue="#{ville}"
+											itemLabel="#{ville.codePostal} #{ville.nom}"></f:selectItems>
+									</b:selectOneMenu>
+								</b:column>
+							</b:row>
+						</fieldset>
+						<br />
+
+
+
+						<!-- adresse livraison -->
+						<fieldset id="fieldset2">
+							<legend>livraison</legend>
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+									<h:outputLabel value="Adresse 1 :" for="adresse1liv" />
+								</b:column>
+
+								<b:column tiny-screen="12" medium-screen="9" large-screen="3">
+									<h:inputText id="adresse1liv"
+										value="#{mbGererCompteClient.client.adresseLivraison}" />
+								</b:column>
+							</b:row>
+							<br />
+
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+									<h:outputLabel value="Adresse 2 :" for="adresse2liv" />
+								</b:column>
+
+								<b:column tiny-screen="12" medium-screen="9" large-screen="3">
+									<h:inputText id="adresse2liv"
+										value="#{mbGererCompteClient.client.complementAdresseLivraison}" />
+								</b:column>
+							</b:row>
+							<br />
+
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+									<h:outputLabel value="Ville :" for="villeliv" />
+								</b:column>
+
+								<b:column tiny-screen="12" medium-screen="9" large-screen="4">
+									<b:selectOneMenu id="villeliv"
+										value="#{mbGererCompteClient.client.villeLivraison}">
+										<f:selectItem itemLabel="Ville" itemValue=""
+											noSelectionOption="true" />
+										<f:selectItems value="#{mbGererCompteClient.villes}"
+											var="villeliv"
+											itemLabel="#{villeliv.codePostal} #{villeliv.nom}"></f:selectItems>
+									</b:selectOneMenu>
+								</b:column>
+							</b:row>
+						</fieldset>
+						
+						</div>
+						<br />
+
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+								<h:outputLabel value="Identifiant :" for="login" />
+							</b:column>
+
+							<b:column tiny-screen="6" medium-screen="3" large-screen="2">
+								<h:inputText id="login" required="true"
+									requiredMessage="Identifiant obligatoire"
+									value="#{mbGererCompteClient.client.login}" />
+							</b:column>
+						</b:row>
+						
+						<br />
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+								<h:outputLabel value="Mot de passe :" for="password" />
+							</b:column>
+
+							<b:column tiny-screen="6" medium-screen="3" large-screen="3">
+								<h:inputSecret id="password" required="true"
+									requiredMessage="Mot de passe obligatoire"
+									value="#{mbGererCompteClient.client.password}" />
+							</b:column>
+						
+							<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+								<h:outputLabel value="Confirmation mot de passe :" for="password2" />
+							</b:column>
+
+							<b:column tiny-screen="6" medium-screen="3" large-screen="3">
+								<h:inputSecret id="password2" required="true"
+									requiredMessage="Mot de passe confirmation obligatoire"
+									value="#{mbGererCompteClient.passwordConfirmation}" />
+							</b:column>
+						</b:row>
+						<br />
+						
+						
+						<b:row>
+							<b:column offset="10" tiny-screen="2" medium-screen="2"
+								large-screen="2">
+								<b:commandButton action="#{mbGererCompteClient.ajouter()}"
+									value="Valider" look="warning" />
+							</b:column>
+						</b:row>
+						<br />
+					
+					</b:container>
+</h:form>
+			
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>

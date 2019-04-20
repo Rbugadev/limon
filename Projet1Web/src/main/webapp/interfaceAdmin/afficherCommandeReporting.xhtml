@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Détail de la commande</ui:define>
+
+	<ui:define name="content">
+
+		<h:head>
+
+			<title>Détail de la commande</title>
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/fournisseurAdmin.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
+		</h:head>
+		<h:body>
+			<f:metadata>
+				<f:event listener="#{mbAfficherCommandeReporting.init()}" type="preRenderView"></f:event>
+			</f:metadata>
+
+					<b:row id="banner">
+
+							<h3>Détail de la commande</h3>
+					</b:row>
+					
+			<h:form id="formAfficherApprovisionnement">
+				<b:container layout="fluid">
+
+					<b:dataTable
+						value="#{mbAfficherCommandeReporting.articlesCommandes}"
+						var="articleCommande" 
+						pdf="false" 
+						print="false" 
+						excel="false"
+						border="true" 
+						info="false" 
+						page-length="10" 
+						selectionMode="single"
+						responsive="true" 
+						paginated="false"
+						searching="false">
+
+
+						<b:dataTableColumn headerStyle="text-align: center;vertical-align: middle;" >
+							<f:facet name="header">Image</f:facet>
+							<h:graphicImage
+								value="/pics/articlesImages/#{articleCommande.article.imageMini}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Article</f:facet>
+							<h:outputLabel value="#{articleCommande.article.nom}" />
+						</b:dataTableColumn>
+
+						<b:dataTableColumn>
+							<f:facet name="header">Quantité</f:facet>
+							<h:outputLabel value="#{articleCommande.quantite}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Prix</f:facet>
+							<h:outputLabel value="#{articleCommande.prixTotal} €" />
+						</b:dataTableColumn>
+					</b:dataTable>
+							<div id="boutonBas">
+						<b:panelGrid columns="1">
+						
+							<b:column style="  display: flex; align-items: center;">
+								<b:inputText
+									value="#{mbAfficherCommandeReporting.commande.prixTotal} €"
+									disabled="true" fieldSize="lg" >
+									<f:facet name="prepend">
+										 <h:outputText value="Total à payer: " />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+				
+					</b:panelGrid>
+			
+					<b:commandButton value="Traiter la commande" rendered="#{empty mbAfficherCommandeReporting.commande.dateExpedition}"
+							action="#{mbAfficherCommandeReporting.traiterCommande()}" look="warning"/>
+					</div>
+				</b:container>
+			</h:form>
+			</h:body>
+	</ui:define>
+</ui:composition>
+</html>

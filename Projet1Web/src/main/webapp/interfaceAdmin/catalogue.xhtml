@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Catalogue</ui:define>
+
+	<ui:define name="content">
+		<h:head>
+			<title>Catalogue</title>
+			
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/CatalogueAdmin.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
+		</h:head>
+		
+
+		<h:body>
+		
+			<f:metadata>
+				<f:event listener="#{mbCatalogue.init()}" type="preRenderView"></f:event>
+			</f:metadata>
+			
+			<b:row id="banner">
+				<h3>Catalogue de produits</h3>
+			</b:row>
+			
+			
+			<b:container>
+		
+			<h:form id="formCatalogue">
+
+				<b:container layout="fluid">
+					
+				
+					<b:formGroup>
+						<b:selectOneMenu update="datatableArticles"
+							onchange="ajax:AJAXBean.onChange()"
+							value="#{mbCatalogue.selectedCategorie}" colMd="3" labelColMd="3">
+							<f:ajax listener="#{mbCatalogue.onCategorieChange()}"
+								 update="datatableArticles" />
+							<f:selectItems value="#{mbCatalogue.categories}" var="categorie"
+								itemValue="#{categorie}" itemLabel="#{categorie.nomCategorie}" />
+						</b:selectOneMenu>
+						
+						<b:button href="/Projet1Web/interfaceAdmin/ajouterArticle.xhtml" 
+									value="Création Nouvel Article" look="warning" size="xs"/>
+						
+					</b:formGroup>
+					
+				</b:container>
+						
+					<b:dataTable id="datatableArticles" 
+								 value="#{mbCatalogue.articles}"
+								 var="article" 
+								 pdf="false" 
+								 print="false" 
+								 excel="false"
+								 border="true" 
+								 info="false" 
+								 page-length="20" 
+								 selectionMode="single"
+								 responsive="true"
+								 onselect="ajax:mbCatalogue.afficherFicheProduit(article);"
+								 paginated="false">
+								 
+						<b:dataTableColumn>
+							<f:facet name="header">Image</f:facet>
+							<h:graphicImage value="/pics/articlesImages/#{article.imageMini}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Articles</f:facet>
+							<h:outputLabel value="#{article.nom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Quantité vendue<br />(en kg)</f:facet>
+							<h:outputLabel value="#{article.quantiteVendue}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Prix<br />au kilo</f:facet>
+							<h:outputLabel value="#{article.prixKilo} €" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Prix</f:facet>
+							<h:outputLabel value="#{article.prix} €" />
+						</b:dataTableColumn>
+					</b:dataTable>
+				</h:form>
+			</b:container>	
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>

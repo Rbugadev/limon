@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<h:head>
+	
+	<link rel="shortcut icon" href="#{request.contextPath}/pics/website/citronLogo.ico"/>
+	<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+	<script src="#{request.contextPath}/js/versLeHaut.js"></script>
+		
+</h:head>
+<h:body>
+	<h:form>
+	<b:navBar id="navbarHeader" 
+			  brand=""
+			  brand-img="#{request.contextPath}/pics/website/citronLogo70.png"
+			  brandHref="/Projet1Web/interfaceAdmin/accueilAdmin.xhtml"
+			  brand-style="height:100%;padding:8px; margin:0px"
+			  inverse="true"
+			  fluid="true" 
+			  position="top"
+			  sticky="false">
+
+
+		<b:navbarLinks class="navbarLinks" pull="right">
+			<b:navCommandLink class="btn_magasin" value="Se déconnecter" rendered="#{not empty clientConnecte}"
+				 action="#{mbConnectionUtilisateur.seDeconnecter()}"/>
+			<b:navLink value="Clients" class="btn_magasin"
+				href="/Projet1Web/interfaceAdmin/moteurRechercheClient.xhtml"></b:navLink>
+			<b:navLink value="Fournisseurs" class="btn_magasin"
+				href="/Projet1Web/interfaceAdmin/moteurRechercheFournisseur.xhtml"></b:navLink>
+			<b:navLink value="Catalogue" class="btn_magasin"
+				href="/Projet1Web/interfaceAdmin/catalogue.xhtml"></b:navLink>
+			<b:navLink value="Stock" class="btn_magasin"
+				href="/Projet1Web/interfaceAdmin/afficherStock.xhtml"></b:navLink>
+			<b:navLink value="Approvisionnements" class="btn_magasin"
+				href="/Projet1Web/interfaceAdmin/approvisionnement.xhtml"></b:navLink>
+		</b:navbarLinks>
+
+	</b:navBar>
+	</h:form>
+
+
+	<div id="centre">
+		<ui:insert name="content"></ui:insert>
+	</div>
+
+
+
+<!-- FOOTER -->
+
+
+	<footer id="basDePage"> 
+	
+
+	<div id="wrap" class="wrapper">
+		<h2 id="citron">CITRON™</h2>
+		<p id="copyright">Copyright @ 2019. Tous droits réservés</p>
+		<div class="basBasDePage">
+			<a href="#" id="lien1">Qui sommes-nous ?</a> <a href="#" id="lien2">Conditions
+				Générales d'Utilisation</a> <a href="#" id="lien3">Politique de
+				Protection des Données Personnelles</a>
+		</div>
+	</div>
+	</footer>
+
+
+
+</h:body>
+</html>

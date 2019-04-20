@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	
+	<persistence-unit name="Projet1DS"	transaction-type="JTA">
+		<jta-data-source>java:jboss/datasources/Projet1DS</jta-data-source>
+		<class>fr.afcepf.al33.projet1.entity.Client</class>
+		<class>fr.afcepf.al33.projet1.entity.Ville</class>
+		<class>fr.afcepf.al33.projet1.entity.Fournisseur</class>
+		<class>fr.afcepf.al33.projet1.entity.Article</class>
+		<class>fr.afcepf.al33.projet1.entity.Approvisionnement</class>
+		<class>fr.afcepf.al33.projet1.entity.ArticleCommande</class>
+		<class>fr.afcepf.al33.projet1.entity.Categorie</class>
+		<class>fr.afcepf.al33.projet1.entity.Commande</class>
+		<class>fr.afcepf.al33.projet1.entity.Stock</class>
+
+
+	<properties>
+		<property name="hibernate.dialect"
+			value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+		<property name="hibernate.show_sql" value="true" />
+
+		<property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
+		<property name="javax.persistence.sql-load-script-source" value="data.sql"/>
+		
+		<property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.DefaultSessionLog"/>
+		<property name="eclipselink.logging.file" value="C:\\JEE_Servers\\Logs\\log4j-Projet1AL.log"/>
+		<property name="eclipselink.logging.level" value="FINE" />
+		<property name="eclipselink.logging.level.sql" value="FINE" />
+		<property name="eclipselink.logging.parameters" value="true"/>
+			
+	</properties>
+	
+	</persistence-unit>
+</persistence>

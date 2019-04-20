@@ -1,0 +1,56 @@
+.btn-warning
+{
+	width: 250px !important;
+	height: 50px !important;
+	font-size: 22px !important;
+	font-weight: bold !important;
+	border-radius: 15px; 
+	box-shadow: 0 5px 15px rgba(0,0,0,.2);
+	margin-top: 30px;
+}
+
+.btn-default
+{
+	width: 250px !important;
+	height: 50px !important;
+	font-size: 22px !important;
+	font-weight: bold !important;
+	border-radius: 15px; 
+	box-shadow: 0 5px 15px rgba(0,0,0,.2);
+	margin-top: 30px;
+}
+
+.btn-secondary
+{
+	width: 250px !important;
+	height: 50px !important;
+	font-size: 18px !important;
+	font-weight: bold !important;
+	border-radius: 15px; 
+	box-shadow: 0 5px 15px rgba(0,0,0,.2);
+	margin-top: 30px;
+}
+
+.input-group-addon:first-child
+{
+	border-radius: 15px 0px 0px 15px;
+	box-shadow: 0 5px 15px rgba(0,0,0,.2);
+	width: 150px !important;
+	font-size: 20px;
+}
+
+.form-control
+{
+	border-radius: 15px;
+	box-shadow: 0 5px 15px rgba(0,0,0,.2);
+	height: 90px !important;
+	width: 1000px !important;
+	font-size: 20px;
+	margin-bottom: 0px;
+	font-style: italic !important;
+}
+
+#descriptif {
+	
+	color: red !important;
+}

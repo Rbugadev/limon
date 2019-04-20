@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Rechercher commandes à traiter</ui:define>
+
+	<ui:define name="content">
+
+		<h:head>
+			<title>Rechercher commandes à traiter</title>
+			
+			<link	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>			
+		</h:head>
+		
+			<f:metadata>
+				<f:event listener="#{mbFindCommandeATraiter.init()}" type="preRenderView"></f:event>
+			</f:metadata>
+		
+		<h:body>
+					<b:row id="banner">
+		
+							<h3>Liste des commandes à traiter</h3>
+				
+				
+					</b:row>
+		
+		<b:container id="principal">
+			<h:form id="formRechercheCommandesATraiter">
+
+				<b:container layout="fluid">
+					<h:messages style="color:red;margin:8px;" />
+					<br />
+		
+
+					<b:dataTable value="#{mbFindCommandeATraiter.commandes}" 
+								 var="cde"
+								 excel="false" 
+								 pdf="false" 
+								 print="false" 
+								 border="true" 
+								 info="false"
+								 page-length="20" 
+								 selectionMode="single" 
+								 responsive="true"
+								 tiny-screen="12" 
+								 medium-screen="12"  
+								 large-screen="12"
+								 onselect="ajax:mbFindCommandeATraiter.onSelect(cde);"
+								 paginated="false" >
+								 
+
+						<b:dataTableColumn>
+							<f:facet name="header">Enregistrée le</f:facet>
+							<h:outputLabel value="#{cde.dateCreation}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputLabel>
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header"> Détail</f:facet>
+							<b:commandButton value=""
+								look="warning"
+								action="#{mbAccueilAdmin.onSelect(cde)}">
+								<b:image value="../pics/icones/searchWhite32.png"/>	
+							</b:commandButton>
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Client</f:facet>
+							<h:outputLabel value="#{cde.client.nom} #{cde.client.prenom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Montant</f:facet>
+							<h:outputLabel value="#{cde.prixTotal}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Traiter</f:facet>
+	    						<b:commandButton id="btn_traiter" value="Traiter" look="warning"
+									action="#{mbFindCommandeATraiter.traiterCommande(cde)}" />
+						</b:dataTableColumn>
+					</b:dataTable>
+
+				</b:container>
+			</h:form>
+			</b:container>
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>

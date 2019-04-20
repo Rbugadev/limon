@@ -1,0 +1,550 @@
+/*************************
+		GENERAL
+*************************/
+h3
+{
+	color: #ffffff !important;
+	font-size: 4vw;
+	font-weight: bold !important; 
+	text-align: center;
+	text-shadow: 1px 1px 2px #000000;
+	margin-top:7%;
+	margin-bottom:7%;
+}
+/* h3 n°2 dans la page */
+#h32
+{
+	color: #d7d7d7!important;
+	border-top: 1px solid black;
+	padding-top: 30px;
+	margin-bottom: 20px !important;
+}
+
+#banner
+{
+	height:25%;
+	background-image: url('../pics/website/bandeau2.jpg');
+  	background-repeat: no-repeat;
+  	background-size: 100%;
+  	margin-bottom: 25px;
+}
+
+.btn-warning 
+{
+	
+	background-color: #9dcb01!important;
+	border: 2px solid   #96c001 !important;
+}
+
+.btn-default 
+{
+	border: 2px solid  #9dcb01 !important;
+}
+
+#centre
+{
+	/*background-image: url('../pics/website/fondsBoisFonce2.jpg');*/
+	padding-bottom: 50px;
+
+}
+
+/*** ACCUEIL ADMIN ***/
+
+#donutchart text{
+	font-size: 1.5em;
+}
+
+
+#titreChartCommande{
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.5em;
+	margin-top: 10%;
+}
+
+#infoJS{
+	visibility:hidden;
+}
+
+#charts{
+	display: flex;
+}
+
+#btnLienReporting{
+	position: relative;
+	left: 40%;
+	margin-bottom: 50px;
+}
+
+	/*** DATA TABLE ***/
+	
+.table
+{
+	border-radius: 25px !important;
+	border: 2px solid #FFF726 !important;
+	box-shadow: 0 15px 25px rgba(0,0,0,.2);
+	letter-spacing: 1px;
+}
+
+div.dataTables_wrapper div.dataTables_length label
+{
+	font-size: 20px;
+	font-weight: bold !important;
+}
+
+/*combobox "categories"*/
+.form-control
+{
+	border-radius: 15px;
+	box-shadow: 0 5px 15px rgba(0,0,0,.2);
+	height: 40px !important;
+	font-size: 20px;
+	margin-bottom: 0px;
+}
+
+input, button, select, textarea
+{
+	font-weight: bold !important;
+}
+
+/*div du label: rechercher + case de recherche*/
+div.dataTables_wrapper div.dataTables_filter
+{
+	margin-top: 0px;
+	margin-bottom: 40px;
+}
+
+/*label: rechercher*/
+div.dataTables_wrapper div.dataTables_filter label
+{
+	font-weight: bold !important;
+	font-size: 20px !important;
+}
+/*case de recherche*/
+div.dataTables_wrapper div.dataTables_filter input
+{
+	border-radius: 15px; 
+	box-shadow: 0 5px 15px rgba(0,0,0,.2);
+	height: 35px !important;
+}
+
+.table td, .table th
+{
+	text-align: center !important;
+	vertical-align: middle !important;
+
+}
+
+/* case + - */
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button
+{
+	padding-top: 1px;
+	padding-bottom: 1px;
+	color: #9dcb01;
+	font-size: 25px !important;
+	width: 70px;
+}
+
+/* header du datatable*/
+
+.sorting
+{
+	background-color: rgba(150, 192, 1 , 0.7) !important;
+	font-size: 20px !important;	
+}
+
+
+
+
+.table td > button:first-child, .table th > button:first-child
+{
+	
+	border-radius: 100px !important;
+
+}
+
+/* images à l'intérieur d'une row du datatable*/
+
+.table td > img, .table th > img
+{
+	border: 2px solid #FFF726 !important;
+	border-radius: 35px !important;
+
+}
+
+/* lignes impaires du datatable */
+
+table tr:nth-child(odd) td
+{
+	background-color: rgba(150, 192, 1 , 0.1) !important;
+	font-size: 17px !important;	
+}
+
+
+/* lignes paires du datatable */
+
+table tr:nth-child(even) td
+{
+	background-color: rgba(255, 255, 255, 0.95) !important;
+	font-size: 17px !important;	
+	border-radius : 0px 0px 0px 25px !important;
+}
+
+/* suppression angle inferieur datatable*/
+.table-striped > tbody > tr:nth-of-type(2n+1),
+.table-hover > tbody > tr:hover
+{
+	background-color: rgba(255, 255, 255, 0) !important;
+}
+
+/* coin haut-gauche arrondi du datatable */
+
+.sorting:first-child {
+	border-radius : 25px 0px 0px 0px !important;
+}
+
+/* coin haut-droit arrondi du datatable */
+
+.sorting:last-child {
+	border-radius : 0px 25px 0px 0px !important;
+}
+
+
+/* coin bas-gauche arrondi du datatable */
+
+table tr:last-child td:first-child
+{
+
+	border-radius : 0px 0px 0px 25px !important;
+}
+
+/* coin bas-droit arrondi du datatable */
+
+table tr:last-child td:last-child
+{
+
+	border-radius : 0px 0px 25px 0px !important;
+}
+
+/*pagination bas de datatable*/
+.pagination > li:first-child > a
+{
+	width: 100px;
+	border-radius: 20px 0px 0px 20px;
+	text-align: center;
+	font-weight: bold;
+	
+}
+
+.pagination > li:last-child > a
+{
+	width: 100px;
+	border-radius: 0px 20px 20px 0px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.pagination > .active > a
+{
+	width: 40px;
+	background-color: #9dcb01!important;
+	border-color: #9dcb01!important;
+	text-align: center;
+	font-weight: bold;
+}
+
+div.dataTables_wrapper div.dataTables_paginate ul.pagination
+{
+	margin-top: 20px;
+}
+
+table.dataTable tbody > tr.selected
+{
+	background-color: white !important;
+	color: #5f5f5f!important;
+}
+/**************************
+		MASTERPAGE
+**************************/
+
+/*** HEADER ***/
+
+
+.navbar
+{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 0px !important;
+	border-radius: 0px !important;
+}
+
+
+#navbar-brand img
+{
+	height:100%;
+	width:auto;
+}
+
+.navbarLinks
+{
+	padding:20px;
+}
+
+.btn_magasin
+{
+	font-size: 22px;
+}
+
+.navbar-inverse .navbar-nav > li > a 
+{
+	color:  #c0c0c0!important ;
+}
+	
+.navbar-inverse .navbar-nav > li > a:hover 
+{
+color: #ffffff!important;
+border-bottom: 1px solid #FFF726 !important ;
+}
+
+/*** FOOTER  ***/
+
+footer
+{
+	padding-top: 20px;
+    background-color:#222222;
+    color: #FFF726;
+    top: 85%;
+    width: 100%;
+    margin: 0;
+}
+.contenantFooter
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.contenantFooter>div
+{
+    display:flex;
+    flex-direction: row;
+    margin-left:75px;
+}
+
+.formInfo 
+{
+	margin-bottom: 5px;
+	font-size: 1.2rem;
+	text-align: right;
+}
+.texteContact 
+{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    margin-top: 25px;
+}
+
+
+.basBasDePage
+{
+    display: flex;
+    justify-content: center;
+    font-size: 1em;
+    padding-bottom: 25px;
+    color: #FFF726; 
+}
+.basBasDePage a
+{
+    margin-right: 25px;
+    text-decoration: none;
+}
+
+#copyright
+{
+	color: #FFF726; 
+	text-align: center;
+}
+
+#citron
+{
+	color: #FFF726; 
+	font-weight: bold; 
+	text-align: center;
+}
+
+#lien1,
+#lien2,
+#lien3
+{
+	color: white;
+}
+
+/*************************
+	FICHE ARTICLE
+*************************/
+
+
+/* Basic Styling */
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+ 
+.container1 {
+  max-width: 1200px;
+  margin: 22px  auto;
+  padding: 15px;
+  display: flex;
+}
+
+/* Columns */
+.left-column {
+  width: 65%;
+  position: relative;
+}
+ 
+.right-column {
+  width: 35%;
+  margin-top: 120px;
+}
+
+/* Left Column */
+.left-column graphicImage {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+ 
+.left-column graphicImage.active {
+  opacity: 1;
+}
+
+/* Product Description */
+.product-description {
+  border-bottom: 1px solid #E1E8EE;
+  margin-bottom: 20px;
+}
+.product-description .span {
+  font-size: 12px;
+  color: #7DC855;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+#nomCategorie
+{
+	margin-bottom: 20px;
+}
+.product-description .h1 {
+  font-weight: 300;
+  font-size: 52px;
+  color: #43484D;
+  letter-spacing: -2px;
+}
+.product-description .p {
+  font-size: 16px;
+  font-weight: 300;
+  color: #86939E;
+  line-height: 24px;
+}
+#descriptif
+{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+/* Product Color */
+.product-color {
+ 	margin-top: 50px;
+ 	font-size: 20px;
+ 	font-weight: 100;
+ 	letter-spacing: 0px;
+}
+ 
+.color-choose div {
+  display: inline-block;
+}
+ 
+
+
+/* Cable Configuration */
+.cable-choose {
+  margin-bottom: 20px;
+}
+ 
+.cable-choose button {
+  border: 2px solid #E1E8EE;
+  border-radius: 6px;
+  padding: 13px 20px;
+  font-size: 14px;
+  color: #5E6977;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all .5s;
+}
+ 
+.cable-choose button:hover,
+.cable-choose button:active,
+.cable-choose button:focus {
+  border: 2px solid #86939E;
+  outline: none;
+}
+ 
+
+/* Product Price */
+.product-price {
+  display: flex;
+  align-items: center;
+}
+ 
+.product-price .span {
+  font-size: 26px;
+  font-weight: 300;
+  color: #43474D;
+  margin-right: 20px;
+}
+ 
+.cart-btn {
+  display: inline-block;
+  background-color: #7DC855;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 12px 30px;
+  transition: all .5s;
+}
+.cart-btn:hover {
+  background-color: #64af3d;
+}
+
+/* Responsive */
+@media (max-width: 940px) {
+  .container1 {
+    flex-direction: column;
+    margin-top: 60px;
+  }
+ 
+  .left-column,
+  .right-column {
+    width: 100%;
+  }
+ 
+  .left-column graphicImage {
+    width: 300px;
+    right: 0;
+    top: -65px;
+    left: initial;
+  }
+}
+ 
+@media (max-width: 535px) {
+  .left-column graphicImage {
+    width: 220px;
+    top: -85px;
+  }
+}

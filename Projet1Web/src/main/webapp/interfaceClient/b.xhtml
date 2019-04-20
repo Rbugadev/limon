@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+
+<ui:composition template="/interfaceClient/masterPageClient.xhtml">
+	<ui:define name="title">Accueil client</ui:define>
+
+	<ui:define name="content">
+
+		<h:head>
+			<title>Accueil client</title>
+
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css" href="/css/styleClient.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>			
+		</h:head>
+
+		<h:body>
+
+
+			<b:carousel id="carousel">
+				<b:carouselItem>
+					<img src="#{request.contextPath}/pics/carousel/jolisFruits7.jpg"
+						alt="jolisFruits7" />
+				</b:carouselItem>
+				<b:carouselItem>
+					<img src="#{request.contextPath}/pics/carousel/jolisFruits2.jpg"
+						alt="jolisFruits2" />
+				</b:carouselItem>
+				<b:carouselItem>
+					<img src="#{request.contextPath}/pics/carousel/jolisFruits6.jpg"
+						alt="jolisFruits6" />
+				</b:carouselItem>
+			</b:carousel>
+
+
+			<!-- FOOTER CAROUSEL -->
+
+			<div id="footer_carousel">
+				<h2 id="citron">CITRON™</h2>
+			</div>
+
+
+			<!-- JUMBOTRON -->
+
+			<div class="container-fluid" id="jumbotronNousConnaitre">
+				<div class="row jumbotron">
+					<div class="container-fluid padding">
+						<div class="row welcome text-center">
+							<div class="col-5"></div>
+							<div class="col-2" id="nousConnaitre">
+								<h2 class="display-4">Nous connaître</h2>
+							</div>
+
+							<div class="col-5"></div>
+						</div>
+					</div>
+					<div class="col-xs-0 col-sm-0 col-md-2 col-lg-2 col-xl-2"></div>
+					<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+						<br /> <br /> <br />
+						<p class="lead">
+							Les agriculteurs partenaires de Citron™ s’efforcent au quotidien de 
+							travailler avec bon sens. Qu’ils travaillent en agriculture paysanne, labellisée
+							 Bio ou ultra raisonnée, ils le font de manière à respecter l’environnement, notre 
+							 santé et les besoins futurs de leurs terres agricoles. Transmettre, partager, 
+							 faire découvrir et innover sont les fondements de leur démarche, qu’elle soit 
+							 paysanne ou artisanale. <br /><br />
+							 Passionnés par les bons produits et le monde agricole, notre équipe veille tous les 
+							 jours à prendre soin de ce qui va se retrouver dans votre assiette. A priori incollables 
+							 sur le Chou Kale, la Betterave Chioggia ou encore le Chou Romanesco, ils sauront vous 
+							 faire partager de bonnes idées recettes à cuisiner !
+						</p>
+						<br />
+					</div>
+					<div class="col-xs-0 col-sm-0 col-md-2 col-lg-2 col-xl-2"></div>
+					<div class="col-xs-0 col-sm-0 col-md-2 col-lg-2 col-xl-2"></div>
+				</div>
+			</div>
+			
+			
+			<div
+	class="insight-title style-default" >
+	<div class="insight-title--title"></div>
+			<div class="insight-title--subtitle">
+			DU CHAMP A VOTRE ASSIETTE EN MOINS DE 24H !		</div>
+				<div
+			class="insight-separator vc_separator wpb_content_element vc_separator_align_center vc_sep_pos_align_center vc_separator-has-text">
+			<span class="vc_sep_holder vc_sep_holder_l"><span class="vc_sep_line"></span></span>
+			<div class="insight-separator--icon vc_icon_element vc_icon_element-outer">
+				<i class="organik-flower"></i>
+			</div>
+			<span class="vc_sep_holder vc_sep_holder_r"><span class="vc_sep_line"></span></span>
+		</div>
+	</div>
+
+	<div class="wpb_text_column wpb_content_element " >
+		<div class="wpb_wrapper">
+			<p style="text-align: center;"><strong>Une journée chez Au Bout Du Champ et ses producteurs :</strong></p>
+
+		</div>
+	</div>
+	<div class="insight-process  ">
+											<div class="insight-process--step step-1">
+				<div class="insight-process--step--icon">
+					<i class='organik-barn' ></i>					<span class="order">1</span>
+				</div>
+				<div class="insight-process--step--title">
+					RÉCOLTE				</div>
+				<div class="insight-process--step--text">
+					tous les matins				</div>
+			</div>
+															<div class="step-line"></div>
+						<div class="insight-process--step step-2">
+				<div class="insight-process--step--icon">
+					<i class='organik-delivery' ></i>					<span class="order">2</span>
+				</div>
+				<div class="insight-process--step--title">
+					ACHEMINEMENT				</div>
+				<div class="insight-process--step--text">
+					par nos soins chaque jour				</div>
+			</div>
+															<div class="step-line"></div>
+						<div class="insight-process--step step-3">
+				<div class="insight-process--step--icon">
+					<i class='organik-basket' ></i>					<span class="order">3</span>
+				</div>
+				<div class="insight-process--step--title">
+					DISTRIBUTION				</div>
+				<div class="insight-process--step--text">
+					7j/7 dans nos points de vente				</div>
+			</div>
+															<div class="step-line"></div>
+						<div class="insight-process--step step-4">
+				<div class="insight-process--step--icon">
+					<i class='organik-carrot' ></i>					<span class="order">4</span>
+				</div>
+				<div class="insight-process--step--title">
+					CUISINE				</div>
+				<div class="insight-process--step--text">
+					ultra-frais à la maison				</div>
+			</div>
+						</div>
+			
+			
+			
+			
+			<div
+				class="inscription col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+				<a href="#sInscrire" data-toggle="modal" id="jeMInscris"
+					onclick="$('.formValidationModalClass1').modal('show')">Je m'inscris!</a>
+
+
+				<b:modal styleClass="formValidationModalClass1" closable="false"
+					closeOnEscape="true">
+					<b:form>
+
+						<br />
+						<br />
+						<h4>Formulaire d'adhésion</h4>
+						<br />
+						<br />
+
+						<b:row>
+							<b:column>
+								<b:inputText placeholder="Nom"
+									value="#{mbAddAdherent.adherent.nom}" class="form-control"
+									id="exampleDropdownFormEmail2" required="true"
+									requiredMessage="Veuillez saisir un nom" />
+
+								<b:inputText placeholder="Prénom"
+									value="#{mbAddAdherent.adherent.prenom}" class="form-control"
+									id="exampleDropdownFormEmail3" required="true"
+									requiredMessage="Veuillez saisir un prénom" />
+
+								<b:inputText placeholder="Numéro et type de voie"
+									value="#{mbAddAdherent.adherent.adresse}" class="form-control"
+									id="exampleDropdownFormEmail4" required="false"
+									requiredMessage="Veuillez saisir une adresse" />
+
+								<b:inputText placeholder="ComplementAdresse"
+									value="#{mbAddAdherent.adherent.complementAdresse}"
+									class="form-control" id="exampleDropdownFormEmail5"
+									required="false" />
+
+								<b:inputText placeholder="Code Postal"
+									value="#{mbAddAdherent.cp}" class="form-control"
+									id="exampleDropdownFormEmail6" required="true"
+									requiredMessage="Veuillez saisir votre code postal" />
+
+								<b:inputText placeholder="Ville"
+									value="#{mbAddAdherent.nomVille}" class="form-control"
+									id="exampleDropdownFormEmail7" required="true"
+									requiredMessage="Veuillez saisir une ville" />
+
+								<b:inputText placeholder="Téléphone fixe"
+									value="#{mbAddAdherent.adherent.numeroFixe}"
+									class="form-control" id="exampleDropdownFormEmail8"
+									required="false" />
+
+								<b:inputText placeholder="Portable"
+									value="#{mbAddAdherent.adherent.numeroPort}"
+									class="form-control" id="exampleDropdownFormEmail9"
+									required="false" />
+
+								<b:inputText placeholder="Email"
+									value="#{mbAddAdherent.adherent.email}" class="form-control"
+									id="exampleDropdownFormEmail10" required="false"
+									requiredMessage="Veuillez saisir votre mail" />
+
+								<b:inputText placeholder="Identifiant"
+									value="#{mbAddAdherent.adherent.login}" class="form-control"
+									id="exampleDropdownFormEmail11" required="true"
+									requiredMessage="Veuillez choisir un identifiant" />
+
+								<b:inputSecret placeholder="Password"
+									value="#{mbAddAdherent.adherent.password}" class="form-control"
+									id="exampleDropdownFormEmail12" required="true"
+									requiredMessage="Veuillez choisir un mot de passe" />
+
+							</b:column>
+						</b:row>
+						<br />
+						<br />
+						<b:row>
+							<b:column>
+								<b:commandButton largeScreen="half" update="@form"
+									dismiss="modal" value="S'enregistrer" look="warning"
+									action="#{mbAddAdherent.add()}" />
+								<b:button largeScreen="half" value="Annuler" dismiss="modal"
+									href="#navbar-brand" />
+							</b:column>
+						</b:row>
+
+						<b:fetchBeanInfos />
+						<b:messages />
+					</b:form>
+				</b:modal>
+
+			</div>
+			<b:container id="container_presentation"></b:container>
+			<b:container id="container_producteurs"></b:container>
+			<b:container id="container_service"></b:container>
+
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>

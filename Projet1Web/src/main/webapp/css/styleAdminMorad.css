@@ -1,0 +1,45 @@
+
+.btn-warning
+{
+	width: 100% !important;
+	height: 50px !important;
+	font-size: 22px !important;
+	font-weight: bold !important;
+	border-radius: 15px; 
+	box-shadow: 0 5px 15px rgba(0,0,0,.2);
+	margin: auto;
+	
+}
+
+#reporting
+{
+	margin-top: 0px;
+	margin-right: 50px;
+	margin-left: 50px;
+	padding-top: 80px;
+	padding-bottom: 30px;
+}
+
+.thumbnail
+{
+	border: 3px solid #d8d8d8 !important;
+	border-radius: 25px !important;
+	box-shadow: 0 15px 25px rgba(0,0,0,.2);
+}
+
+.compteurJS{
+	margin: auto;
+	font-size: 3em;
+	text-align: center;
+	height: 70px;
+}
+
+
+#commandeTraite{
+	display: flex;
+}
+
+#infoJS{
+	visibility:hidden;
+}
+

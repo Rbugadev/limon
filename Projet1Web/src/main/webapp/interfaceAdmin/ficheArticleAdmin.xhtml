@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+
+	<ui:define name="title">Fiche produit</ui:define>
+
+	<ui:define name="content">
+
+	<h:head>
+	
+	<f:metadata>
+				<f:event listener="#{mbFicheArticleAdmin.init()}" type="preRenderView"></f:event>
+			</f:metadata>
+
+			<title>Fiche produit</title>
+
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/ficheArticleAdmin.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>			
+		</h:head>
+
+		<h:body>
+
+			<b:container class="container1">
+ 
+  <!-- Left Column / Headphones Image -->
+  <div class="left-column">
+   <h:graphicImage value="/pics/articlesImages/#{mbFicheArticleAdmin.article.image}" />
+  </div>
+ 
+ 
+  <!-- Right Column -->
+  <div class="right-column">
+ 
+    <!-- Product Description -->
+    <div class="product-description">
+    	<b:row id="nomCategorie">
+      		<h:outputText class="span" value="#{mbFicheArticleAdmin.article.categorie.nomCategorie}"/>
+      	</b:row>
+      	<b:row>
+       		<h:outputText class="h1" value="#{mbFicheArticleAdmin.article.nom}"/>
+       	</b:row>
+       	<b:row id="descriptif">
+       		<h:outputText class="p" value="#{mbFicheArticleAdmin.article.descriptif}"/>
+		</b:row>
+    </div>
+ 
+    <!-- Product Configuration -->
+    <div class="product-configuration">
+ 
+      <!-- Product Color -->
+		<div class="product-color">
+	      	<b:row>
+	      		<h:outputText class="span" value="Prix de vente"/>
+	      	</b:row>  
+		</div>  
+ 	</div>
+ 
+    <!-- Product Pricing -->
+    <div class="product-price">
+		<b:row>
+			<h:outputText class="span" value="#{mbFicheArticleAdmin.article.prix} €" />
+		</b:row>  
+    </div>
+    
+    <div class="ajourFicheArticle">
+		<b:row class="ajourFicheArticle">
+		<h:form>
+			<b:button id="btn_ajouterFicheArticleAdmin" value="Mise à jour" look="warning"
+				href="../interfaceAdmin/updateArticle.xhtml">
+			</b:button>
+		</h:form>
+		</b:row>
+    </div>
+    
+  </div>
+  
+  
+</b:container>
+		</h:body>
+	</ui:define>
+</ui:composition>
+
+</html>

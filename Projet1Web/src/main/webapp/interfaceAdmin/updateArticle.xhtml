@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Mise à jour article</ui:define>
+	<ui:define name="content">
+
+		<h:head>
+		
+			<title>Mise à jour article</title>
+			
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/ficheArticleAdmin.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>				
+		</h:head>
+		<h:body>
+		
+		
+			<f:metadata>
+				<f:event listener="#{mbUpdateArticle.init()}" type="preRenderView"></f:event>
+			</f:metadata>
+
+			
+						<b:row id="banner">
+						
+								<h3>Fiche produit détaillée</h3>
+						
+						</b:row>
+
+				<b:container >
+				<b:form id="formFicheProduit">
+					<b:container layout="fluid">
+						<div>
+							<h:graphicImage
+								value="/pics/articlesImages/#{mbFicheArticleAdmin.article.image}" />
+						</div>
+
+						<b:panelGrid columns="1">
+							<b:row>
+								<b:column>
+									<b:inputTextarea row="6" value="#{mbFicheArticleAdmin.article.descriptif}"
+										fieldSize="lg">
+										<f:facet name="prepend">
+											<h:outputText value="Description" />
+										</f:facet>
+									</b:inputTextarea>
+								</b:column>
+							</b:row>
+							<b:row>
+								<b:column>
+									<b:inputText
+										value="#{mbFicheArticleAdmin.article.nom}"
+										fieldSize="lg">
+										<f:facet name="prepend">
+											<h:outputText value="Appellation" />
+										</f:facet>
+									</b:inputText>
+								</b:column>
+							</b:row>
+							<b:row>
+								<b:column>
+									<b:inputText
+										value="#{mbFicheArticleAdmin.article.categorie.nomCategorie}"
+										fieldSize="lg">
+										<f:facet name="prepend">
+											<h:outputText value="Catégorie" />
+										</f:facet>
+									</b:inputText>
+								</b:column>
+							</b:row>
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+									<b:inputText
+										value="#{mbFicheArticleAdmin.article.prix}"
+										fieldSize="lg">
+										<f:facet name="prepend">
+											<h:outputText value="Prix de vente" />
+										</f:facet>
+									</b:inputText>
+								</b:column>
+							</b:row>
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+									<b:inputText
+										value="#{mbFicheArticleAdmin.article.prixKilo}"
+										fieldSize="lg">
+										<f:facet name="prepend">
+											<h:outputText value="Prix au kilo" />
+										</f:facet>
+									</b:inputText>
+								</b:column>
+							</b:row>
+						</b:panelGrid>
+						<b:panelGrid columns="3">
+						<b:button id="chargerImage" value="Annuler"
+							href="../interfaceAdmin/ficheArticleAdmin.xhtml" look="default"/>
+							<b:button value="Charger une image"
+							href="#chargerImage" look="secondary"/>
+							<b:commandButton value="Enregistrer"
+							action="#{mbUpdateArticle.update()}" look="warning"/>
+					</b:panelGrid>
+					</b:container>
+				</b:form>
+			</b:container>
+	
+		</h:body>
+
+	</ui:define>
+</ui:composition>
+</html>

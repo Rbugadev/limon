@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml" xmlns:b="http://bootsfaces.net/ui">
+	<ui:define name="title">Création nouvel Article</ui:define>
+
+	<ui:define name="content">
+				
+		<h:head>
+
+			<title>Création nouvel Article</title>
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
+		</h:head>
+		
+<h:body>
+		<b:container>
+		
+		<b:form id="formAjoutArticle">
+				<b:container layout="fluid">
+					<b:row>
+			
+							<h3>Ajouter	un Article :</h3>
+				
+					</b:row>
+		
+
+					<b:panelGrid columns="1">
+						<b:row>
+							<b:column>
+								<b:inputText value="#{mbAjoutArticle.article.nom}"
+									fieldSize="lg">
+									<f:facet name="prepend">
+										<b:icon name="apple" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column>
+								<b:inputText
+									value="#{mbAjoutArticle.article.descriptif}"
+									fieldSize="lg">
+									<f:facet name="prepend">
+										<b:icon name="align-left" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column>
+								<b:inputText value="#{mbAjoutArticle.article.image}"
+									fieldSize="lg">
+									<f:facet name="prepend">
+										<b:icon name="camera" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column>
+								<b:inputText value="#{mbAjoutArticle.article.imageMini}"
+									fieldSize="lg">
+									<f:facet name="prepend">
+										<b:icon name="camera" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column>
+								<b:inputText value="#{mbAjoutArticle.article.quantiteVendue}"
+									fieldSize="lg">
+									<f:facet name="prepend">
+										<b:icon name="shopping-cart"/>
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+
+						<b:row>
+							<b:column>
+								<b:inputText
+									value="#{mbAjoutArticle.article.prix}"
+									fieldSize="lg">
+									<f:facet name="prepend">
+										<b:icon name="euro" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+
+						<b:row>
+							<b:column>
+								<b:inputText
+									value="#{mbAjoutArticle.article.prixKilo}"
+									fieldSize="lg">
+									<f:facet name="prepend">
+										<b:icon name="usd" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+						
+						<b:row>
+							<b:column>
+								<b:selectOneMenu
+									value="#{mbAjoutArticle.categorie}"
+									required="true" labelColMd="5" select="true" field-size="lg">
+									<f:selectItem itemLabel="Categories" itemValue=""
+										noSelectionOption="true" />
+									<f:selectItems value="#{mbAjoutArticle.categories}"
+										var="categorie" itemValue="#{categorie}"
+										itemLabel="#{categorie.nomCategorie}" />
+								</b:selectOneMenu>
+							</b:column>
+						</b:row>
+
+					</b:panelGrid>
+
+					<b:panelGrid columns="3">
+						<b:commandButton value="Enregistrer"
+							action="#{mbAjoutArticle.ajout()}" look="primary"/>
+					</b:panelGrid>
+				</b:container>
+			</b:form>
+
+
+
+		</b:container>
+</h:body>
+
+</ui:define>
+</ui:composition>
+</html>

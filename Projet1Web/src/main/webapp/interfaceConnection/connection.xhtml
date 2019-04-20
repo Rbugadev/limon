@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/interfaceClient/masterPageClient.xhtml">
+	<ui:define name="title">Page de connection</ui:define>
+
+	<ui:define name="content">
+
+		<h:head>
+
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css" href="/css/styleClient.css" />
+			<title>Page de connection</title>
+
+		</h:head>
+		<h:body>
+			<b:container>
+				<b:form class="row col-md-8 col-md-offset-1">
+
+					<b:container>
+						<b:label text="nom client :    " />
+						<b:inputText value="#{mbConnectionUtilisateur.login}"
+							required="true" requiredMessage="login obligatoire"
+							class="row col-md-4" />
+						<b:label text="mdp :    " />
+						<b:inputSecret value="#{mbConnectionUtilisateur.password}"
+							required="true" requiredMessage="mot de passe obligatoire"
+							class="row col-md-4" />
+
+					</b:container>
+					<br />
+					<br />
+					<br />
+
+					<b:commandButton value="S'identifier"
+						action="#{mbConnectionUtilisateur.sIdentifier()}" look="warning"
+						class="row col-md-4 col-centered" />
+
+
+				</b:form>
+			</b:container>
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>

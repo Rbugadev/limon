@@ -1,0 +1,17 @@
+#boutonBas
+{
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 25px;
+}
+
+.btn-warning
+{
+	width: 260px !important;
+	height: 55px !important;
+	font-size: 21px !important;
+	font-weight: bold !important;
+	border-radius: 15px; 
+	box-shadow: 0 5px 15px rgba(0,0,0,.2);
+	margin-left: 0px;
+}

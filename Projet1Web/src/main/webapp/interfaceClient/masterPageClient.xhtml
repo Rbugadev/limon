@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<h:head>
+
+<link rel="shortcut icon" href="#{request.contextPath}/pics/website/citronLogo.ico"/>
+<link rel="stylesheet" type="text/css" 	href="#{request.contextPath}/css/styleClient.css" />
+<script src="#{request.contextPath}/js/versLeHaut.js"></script>
+
+</h:head>
+
+
+<h:body>
+	<h:form>
+	
+	<b:navBar id="navbar-brand"
+			  brand=""
+			  brand-img="#{request.contextPath}/pics/website/citronLogo70.png"
+			  brandHref="/Projet1Web/interfaceClient/accueilClient.xhtml"
+			  brand-style="height:100%;padding:8px; margin:0"
+			  inverse="true"
+			  fluid="true" 
+			  sticky="false" 
+			  style="color:red;">
+
+		<b:navbarLinks class="navbarLinks" pull="right">
+			<b:navLink class="btn_magasin" value="Se connecter" rendered="#{empty clientConnecte}"
+					onclick="$('.formValidationModalClass').modal('show')" href="#test">
+					<f:param name="blockui.disabled" value="true"/>
+					<b:modal id="identification"  styleClass="formValidationModalClass" closable="false"
+						closeOnEscape="true">
+						<b:form id="form">
+							<h4>Déjà adhérent :</h4>
+
+							<b:row>
+								<b:column>
+									<b:inputText placeholder="Identifiant"
+										value="#{mbConnectionUtilisateur.login}" class="form-control"
+										id="exampleDropdownFormEmail1" required="false"
+										requiredMessage="Entrez votre identifiant" />
+
+									<b:inputSecret placeholder="Mot de passe"
+										value="#{mbConnectionUtilisateur.password}" class="form-control"
+										id="exampleDropdownFormPassword1" required="true"
+										requiredMessage="Entrez votre mot de passel" />
+										<h:message for="exampleDropdownFormPassword1"/>
+
+									<b:button look="link" value="Mot de passe oublié"
+										large-screen="full-width" />
+								</b:column>
+							</b:row>
+
+							<b:row>
+								<b:column>
+									<b:commandButton largeScreen="half" update="@form"
+										dismiss="modal" value="Me connecter" look="warning"
+										action="#{mbConnectionUtilisateur.sIdentifier()}" />
+									<b:button largeScreen="half" value="Annuler" 
+										dismiss="modal"  href="#navbar-brand"/>
+								</b:column>
+							</b:row>
+
+							<b:fetchBeanInfos />
+							<b:messages />
+						</b:form>
+					</b:modal>
+				</b:navLink>
+
+			<b:navLink class="btn_magasin" value="#{clientConnecte.prenom} #{clientConnecte.nom}" rendered="#{not empty clientConnecte}"
+				href="/Projet1Web/interfaceClient/monCompte.xhtml"/>
+
+			<b:navCommandLink class="btn_magasin" value="Se déconnecter" rendered="#{not empty clientConnecte}"
+				 action="#{mbConnectionUtilisateur.seDeconnecter()}"/>
+
+			<b:navLink class="btn_magasin" value="S'inscrire" rendered="#{empty clientConnecte}"
+				href="/Projet1Web/interfaceConnection/gestionCompteClient.xhtml"/>
+
+			<b:navLink class="btn_magasin" value="Notre Magasin"
+				href="/Projet1Web/interfaceClient/catalogueClient.xhtml"/>
+			<b:navLink class="btn_magasin" value="Panier"
+				href="/Projet1Web/interfaceClient/affichagePanier.xhtml"/>
+				
+				
+				 <b:badge id="cartBadge" value="#{mbPanier.articlesCommandes.size()}"/>
+	
+		</b:navbarLinks>
+
+	</b:navBar>
+
+</h:form>
+
+
+	<div id="centre">
+		<ui:insert name="content"></ui:insert>
+	</div>
+
+<!-- FOOTER -->
+
+
+	<footer id="basDePage"> 
+	<div id="wrap" class="wrapper">
+		<h2 id="citron">CITRON™</h2>
+		<p id="copyright">Copyright @ 2019. Tous droits réservés</p>
+		<div class="basBasDePage">
+			<a href="#" id="lien1">Qui sommes-nous ?</a> 
+			<a href="#" id="lien2">Conditions Générales d'Utilisation</a> 
+			<a href="#" id="lien3">Politique de	Protection des Données Personnelles</a>
+		</div>
+	</div>
+	</footer>
+
+
+
+	
+</h:body>
+</html>

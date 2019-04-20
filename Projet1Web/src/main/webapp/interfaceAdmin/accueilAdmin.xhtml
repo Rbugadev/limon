@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Accueil admin</ui:define>
+
+	<ui:define name="content">
+		<h:head>
+			<title>Accueil admin</title>
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdminMorad.css" />
+			
+			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>	
+		</h:head>
+		
+		<h:body>
+		
+
+		<!-- ici pour tester push -->
+
+			<div id="infoJS">
+				<h:outputText id="nbArticlePeremption"
+					value="#{mbAccueilAdmin.approvisionnementsPeremption.size()}" />
+				<h:outputText id="nbArticleRupture"
+					value="#{mbAccueilAdmin.stockRupture.size()}" />
+				<h:outputText id="commandesAtraiter"
+					value="#{mbAccueilAdmin.commandesEnAttente.size()}" />
+			</div>
+
+		<b:row id="reporting">
+		  <b:column col-sm="6" col-md="4">
+		    <b:thumbnail class="thumbnail">
+		      <b:iconAwesome name="cog" spin="true" size="3x" />
+		         <h2>Commandes à Traiter</h2>
+		      <img src="#{request.contextPath}/pics/carousel/commandes.jpg" alt="Generic placeholder thumbnail"/>
+		      <f:facet name="caption">
+		     
+		        <div class="compteurJS" id="compteur"></div>
+		                <b:button look="warning" value="Commandes à Traiter" 
+		        			href="#{request.contextPath}/interfaceAdmin/moteurRechercheCommandesATraiter.xhtml"/>
+		       
+		      </f:facet>
+		    </b:thumbnail>
+		  </b:column>
+		  
+		  <b:column col-sm="6" col-md="4">
+		    <b:thumbnail class="thumbnail">
+		      <b:iconAwesome name="cog" spin="true" size="3x" />
+		      <h2>Alerte: Date de péremption</h2>
+		       <img src="#{request.contextPath}/pics/carousel/jolisFruits10.jpg" alt="Generic placeholder thumbnail"/>
+		      <f:facet name="caption">
+
+		        <div class="compteurJS" id="stockPeremption"></div>
+
+		                <b:button look="warning" value="Articles concernés" 
+		        			href="#{request.contextPath}/interfaceAdmin/articlesPeremption.xhtml"/>
+		       
+		      </f:facet>
+		    </b:thumbnail>
+		  </b:column>
+		  
+		  <b:column col-sm="6" col-md="4">
+		    <b:thumbnail class="thumbnail">
+		       <b:iconAwesome name="cog" spin="true" size="3x" />
+		        <h2>Alerte: Etat du Stock</h2>
+		        <img src="#{request.contextPath}/pics/carousel/jolisFruits9.jpg" alt="Generic placeholder thumbnail"/>
+		      <f:facet name="caption">
+
+		        <div class="compteurJS" id="stockRupture"></div>
+
+		                <b:button look="warning" value="Articles concernés" 
+		        			href="#{request.contextPath}/interfaceAdmin/articlesRupture.xhtml"/>
+		       
+		      </f:facet>
+		    </b:thumbnail>
+		  </b:column>
+		</b:row>
+			
+
+
+
+
+
+			<script type="text/javascript" src="#{request.contextPath}/js/accueilAdmin.js"></script>
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>

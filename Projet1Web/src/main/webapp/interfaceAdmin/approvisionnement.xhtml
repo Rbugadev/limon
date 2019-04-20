@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Approvisionnement</ui:define>
+
+	<ui:define name="content">
+
+		<h:head>
+
+			<title>Approvisionnement</title>
+			<link	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/approvisionnementAdmin.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
+		</h:head>
+
+		<h:body>
+			<f:metadata>
+				<f:event listener="#{mbApprovisionnement.init()}" type="preRenderView"></f:event>
+			</f:metadata>
+			<b:row id="banner">					
+				<h3>Enregistrer un achat fournisseur</h3>					
+			</b:row>
+		
+			<b:container>
+			<h:form id="formApprovisionnement">
+
+				<b:container layout="fluid">
+					<b:row>
+						<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+							<h:outputLabel value="Article :" for="article" style="padding-top:5px"/>
+						</b:column>
+
+						<b:column tiny-screen="12" medium-screen="9" large-screen="10">
+							<b:selectOneMenu id="article"
+								value="#{mbApprovisionnement.approvisionnement.article}"
+								style="width:30%">
+								<f:selectItems value="#{mbApprovisionnement.articles}"
+									var="article" itemLabel="#{article.nom}"></f:selectItems>
+							</b:selectOneMenu>
+						</b:column>
+					</b:row>
+					<br />
+
+					<b:row>
+						<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+							<h:outputLabel value="Date de l'achat :" for="dateAchat" style="padding-top:10px"/>
+						</b:column>
+
+						<b:column tiny-screen="12" medium-screen="9" large-screen="10">
+							<b:formGroup>
+								<b:dateTimePicker format="DD.MM.YYYY" fieldSize="md"
+									margin-bottom="5px" placeholder="Date d'achat"
+									value="#{mbApprovisionnement.approvisionnement.dateApprovisionnement}"
+									iconPosition='left'
+									style="width:30%"/>
+							</b:formGroup>
+						</b:column>
+					</b:row>
+					<br />
+
+					<b:row>
+						<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+							<h:outputLabel value="Fournisseur :" for="fournisseur" style="padding-top:5px"/>
+						</b:column>
+
+						<b:column tiny-screen="12" medium-screen="9" large-screen="10">
+							<b:selectOneMenu id="fournisseur"
+								value="#{mbApprovisionnement.approvisionnement.fournisseur}"
+								style="width:30%">
+								<f:selectItem itemLabel="Fournisseur" itemValue="" />
+								<f:selectItems value="#{mbApprovisionnement.fournisseurs}"
+									var="fournisseur" itemLabel="#{fournisseur.nom}"></f:selectItems>
+							</b:selectOneMenu>
+						</b:column>
+					</b:row>
+					<br />
+
+					<b:row>
+						<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+							<h:outputLabel value="Quantité achetée :" for="quantite" style="padding-top:5px"/>
+						</b:column>
+
+						<b:column tiny-screen="6" medium-screen="3" large-screen="2">
+							<b:inputText
+								value="#{mbApprovisionnement.approvisionnement.quantiteCommandee}" />
+						</b:column>
+					</b:row>
+					<br />
+
+					<b:row>
+						<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+							<h:outputLabel value="Prix :" for="prix" style="padding-top:5px"/>
+						</b:column>
+
+						<b:column tiny-screen="6" medium-screen="3" large-screen="2">
+							<b:inputText
+								value="#{mbApprovisionnement.approvisionnement.prix}" />
+						</b:column>
+					</b:row>
+					<br />
+
+					<b:row>
+						<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+							<h:outputLabel value="Référence du lot :" for="reference" style="padding-top:5px"/>
+						</b:column>
+
+						<b:column tiny-screen="6" medium-screen="3" large-screen="2">
+							<b:inputText value="#{mbApprovisionnement.approvisionnement.lot}" />
+						</b:column>
+					</b:row>
+					<br />
+
+					<b:row>
+						<b:column tiny-screen="12" medium-screen="3" large-screen="2">
+							<h:outputLabel value="Date de péremption :" for="datePeremption" style="padding-top:10px"/>
+						</b:column>
+
+						<b:column tiny-screen="12" medium-screen="9" large-screen="10">
+							<b:formGroup>
+								<b:dateTimePicker format="DD.MM.YYYY" fieldSize="md"
+									margin-bottom="5px" placeholder="Date péremption"
+									value="#{mbApprovisionnement.approvisionnement.datePeremption}"
+									iconPosition='left' 
+									style="width:30%"/>
+							</b:formGroup>
+						</b:column>
+					</b:row>
+					<br />
+					<br />
+
+					<div id="boutonBas">
+					<b:row>
+						<b:column>
+							<b:commandButton
+								action="#{mbApprovisionnement.addApprovisionnementToStock()}"
+								value="Enregistrer" look="warning" />
+						</b:column>
+					</b:row>
+					</div>
+					
+				</b:container>
+			</h:form>			
+			</b:container>
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>

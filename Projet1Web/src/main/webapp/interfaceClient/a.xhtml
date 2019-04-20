@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+
+<ui:composition template="/interfaceClient/masterPageClient.xhtml">
+	<ui:define name="title">Accueil client</ui:define>
+
+	<ui:define name="content">
+		<h:head>
+
+			<link
+				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+				rel="stylesheet" />
+			<link rel="stylesheet" type="text/css" href="/css/styleClient.css" />
+		</h:head>
+
+		<h:body>
+
+			<!-- CAROUSEL -->
+
+			<b:carousel id="carousel">
+				<b:carouselItem>
+					<img src="#{request.contextPath}/pics/carousel/jolisFruits6.jpg"
+						alt="jolisFruits5" />
+				</b:carouselItem>
+				<b:carouselItem>
+					<img src="#{request.contextPath}/pics/carousel/jolisFruits5.jpg"
+						alt="jolisFruits2" />
+				</b:carouselItem>
+				<b:carouselItem>
+					<img src="#{request.contextPath}/pics/carousel/jolisFruits2.jpg"
+						alt="jolisFruits6" />
+				</b:carouselItem>
+			</b:carousel>
+
+			<!-- FOOTER CAROUSEL -->
+
+			<div id="footer_carousel">
+				<h2 id="citron">CITRON™</h2>
+			</div>
+
+			<div>
+				<a href="" id="jeMInscris">test</a>
+			</div>
+
+
+
+
+
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>

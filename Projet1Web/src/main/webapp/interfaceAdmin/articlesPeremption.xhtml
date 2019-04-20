@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Reporting</ui:define>
+
+	<ui:define name="content">
+
+		<h:head>
+
+			<title>Date de péremption proche</title>
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+
+		</h:head>
+		
+			<f:metadata>
+				<f:event listener="#{mbAccueilAdmin.init()}" type="preRenderView"></f:event>
+			</f:metadata>
+		
+		<h:body>
+		
+	
+			<b:row id="banner">
+							<h3>Date de péremption proche</h3>
+			</b:row>
+		
+			<b:container>
+		
+			<h:form>	
+			<b:dataTable 
+				id="datatableArticlePeremption" 
+				value="#{mbAccueilAdmin.approvisionnementsPeremption}" 
+				var="appro"
+				pdf="false"
+				print="false" 
+				excel="false" 
+				border="true" 
+				info="false"
+				selectionMode="single" 
+				responsive="true"
+				paginated="true">
+
+						<b:dataTableColumn label="">
+							<h:graphicImage	value="/pics/articlesImages/#{appro.article.imageMini}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">N° du Lot</f:facet>
+							<h:outputLabel value="#{appro.lot}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Article</f:facet>
+							<h:outputLabel value="#{appro.article.nom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Quantité restante du lot</f:facet>
+							<h:outputLabel value="#{appro.quantiteRestante}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Date de péremption</f:facet>
+							<h:outputLabel value="#{appro.datePeremption}"  >
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+  							</h:outputLabel>
+						</b:dataTableColumn>
+				
+					</b:dataTable>
+				</h:form>	
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+								<h3 id="h32">Articles périmés</h3>
+							</b:column>
+						</b:row>
+						<br />
+						<br />
+						<b:dataTable 
+							value="#{mbAccueilAdmin.approvisionnementsPerimes}"
+							var="approPerime"
+							pdf="false" 
+							print="false" 
+							excel="false" 
+							border="true"
+							info="false" 
+							page-length="20" 
+							selectionMode="single"
+							responsive="true" 
+							onselect="ajax:mbMonCompte.onSelect(commande);"
+							paginated="false" 
+							searching="false">
+
+
+						<b:dataTableColumn label="">
+							<h:graphicImage	value="/pics/articlesImages/#{approPerime.article.imageMini}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">N° du Lot</f:facet>
+							<h:outputLabel value="#{approPerime.lot}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Article</f:facet>
+							<h:outputLabel value="#{approPerime.article.nom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Quantité restante du lot</f:facet>
+							<h:outputLabel value="#{approPerime.quantiteRestante}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Date de péremption</f:facet>
+							<h:outputLabel value="#{approPerime.datePeremption}"  >
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+  							</h:outputLabel>
+						</b:dataTableColumn>
+						<b:dataTableColumn label="Jeter">
+							<h:form>
+							<b:commandButton id="btn_supprimer" value="" look="danger"
+									action="#{mbAccueilAdmin.jeterArticlePerime(approPerime)}">
+								<b:image value="../pics/icones/deleteWhite21.png"/>	
+								
+							</b:commandButton>
+							</h:form>
+						</b:dataTableColumn>
+							
+						</b:dataTable>
+					
+					</b:container>
+			
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>
+		

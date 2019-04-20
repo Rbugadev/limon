@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+
+<ui:composition template="/interfaceClient/masterPageClient.xhtml">
+	<ui:define name="title">Mon compte</ui:define>
+
+	<ui:define name="content">
+		<h:head>
+			<title>Mon compte</title>
+			<link
+				href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+				rel="stylesheet" />
+			<link rel="stylesheet" type="text/css"
+				href="#{request.contextPath}/css/styleClient.css" />
+			<link rel="stylesheet" type="text/css"
+				href="#{request.contextPath}/css/ficheClient.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
+		</h:head>
+
+		<f:metadata>
+			<f:event listener="#{mbMonCompte.init()}" type="preRenderView"></f:event>
+		</f:metadata>
+
+		<h:body>
+			<b:row id="banner">
+				<h3>Mon compte</h3>
+			</b:row>
+
+
+			<b:container>
+				<b:form id="formMonCompte">
+					<b:container layout="fluid">
+
+						<b:panelGrid columns="1">
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+									<b:inputText
+										value="#{mbMonCompte.client.nom} #{mbMonCompte.client.prenom} "
+										disabled="true" fieldSize="lg">
+										<f:facet name="prepend">
+											<b:icon name="user" />
+										</f:facet>
+									</b:inputText>
+								</b:column>
+							</b:row>
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+									<b:inputText value="#{mbMonCompte.client.dateDeNaissance}"
+										disabled="true" fieldSize="lg">
+										<f:convertDateTime pattern="dd/MM/yyyy" />
+										<f:facet name="prepend">
+											<b:icon name="user" />
+										</f:facet>
+									</b:inputText>
+								</b:column>
+							</b:row>
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+									<b:inputText value="#{mbMonCompte.client.complementAdresse}"
+										disabled="true" fieldSize="lg">
+										<f:facet name="prepend">
+											<b:icon name="map-marker" />
+										</f:facet>
+									</b:inputText>
+								</b:column>
+							</b:row>
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+									<b:inputText value="#{mbMonCompte.client.adresse}"
+										disabled="true" fieldSize="lg">
+										<f:facet name="prepend">
+											<b:icon name="map-marker" />
+										</f:facet>
+									</b:inputText>
+								</b:column>
+							</b:row>
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+									<b:inputText
+										value="#{mbMonCompte.client.ville.codePostal} #{mbMonCompte.client.ville.nom}"
+										disabled="true" fieldSize="lg">
+										<f:facet name="prepend">
+											<b:icon name="map-marker" />
+										</f:facet>
+									</b:inputText>
+								</b:column>
+							</b:row>
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+									<b:inputText value="#{mbMonCompte.client.email}"
+										disabled="true" fieldSize="lg">
+										<f:facet name="prepend">
+											<h:outputText value="@" />
+										</f:facet>
+									</b:inputText>
+								</b:column>
+							</b:row>
+
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+									<b:inputText value="#{mbMonCompte.client.numeroFixe}"
+										disabled="true" fieldSize="lg">
+										<f:facet name="prepend">
+											<b:icon name="phone-alt" />
+										</f:facet>
+									</b:inputText>
+								</b:column>
+							</b:row>
+
+							<b:row>
+								<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+									<b:inputText value="#{mbMonCompte.client.numeroPort}"
+										disabled="true" fieldSize="lg">
+										<f:facet name="prepend">
+											<b:icon name="phone" />
+										</f:facet>
+									</b:inputText>
+								</b:column>
+							</b:row>
+						</b:panelGrid>
+						<b:panelGrid columns="2">
+							<b:button
+								href="/Projet1Web/interfaceClient/updateMonCompte.xhtml"
+								value="Mettre à jour" look="warning" />
+						</b:panelGrid>
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+								<h3 id="h32">Mes commandes</h3>
+							</b:column>
+						</b:row>
+						<br />
+						<br />
+						<b:dataTable 
+							value="#{mbMonCompte.commandes}"
+							var="commande"
+							pdf="false" 
+							print="false" 
+							excel="false" 
+							border="true"
+							info="false" 
+							page-length="00" 
+							selectionMode="single"
+							responsive="true" 
+							onselect="ajax:mbMonCompte.onSelect(commande);"
+							paginated="false" 
+							searching="false">
+
+
+							<b:dataTableColumn>
+								<f:facet name="header">Date de<br />la commande :</f:facet>
+								<h:outputLabel value="#{commande.dateCreation}">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+								</h:outputLabel>
+							</b:dataTableColumn>
+							<b:dataTableColumn>
+								<f:facet name="header">Expédiée le :</f:facet>
+								<h:outputLabel value="#{commande.dateExpedition}">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+								</h:outputLabel>
+							</b:dataTableColumn>
+							<b:dataTableColumn>
+								<f:facet name="header">Annulée le :</f:facet>
+								<h:outputLabel value="#{commande.dateAnnulation}">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+								</h:outputLabel>
+							</b:dataTableColumn>
+							<b:dataTableColumn>
+								<f:facet name="header">Remboursée le :</f:facet>
+								<h:outputLabel value="#{commande.dateRemboursement}" />
+							</b:dataTableColumn>
+
+							<b:dataTableColumn>
+								<f:facet name="header">Prix Total</f:facet>
+								<h:outputLabel value="#{commande.prixTotal} €" />
+							</b:dataTableColumn>
+						</b:dataTable>
+					</b:container>
+				</b:form>
+
+			</b:container>
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Reporting</ui:define>
+
+	<ui:define name="content">
+
+		<h:head>
+
+			<title>Reporting</title>
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+
+		</h:head>
+
+		<h:body>
+
+			<b:container>
+			
+					<h3>REPORTING</h3>
+
+
+				<b:tabView activeIndex="0">
+					<b:tab title="Stock par quantité">
+						<b:dataTable id="datatableStocks" value="#{mbAccueilAdmin.stockQuantity}" 
+						var="ligneStock" pdf="false"
+						print="false" excel="false" border="true" info="false"
+						tiny-screen="12" medium-screen="12" large-screen="12"
+						page-length="20" selectionMode="single" responsive="true">
+
+						<b:dataTableColumn
+							headerStyle="text-align: center;vertical-align: middle;">
+							<f:facet name="header">Image: </f:facet>
+							<h:graphicImage
+								value="/pics/articlesImages/#{ligneStock.article.imageMini}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Articles: </f:facet>
+							<h:outputLabel value="#{ligneStock.article.nom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Disponibilité site internet: </f:facet>
+							<h:outputLabel value="#{ligneStock.quantiteDispoPhysique}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Quantités en stock: </f:facet>
+							<h:outputLabel value="#{ligneStock.quantiteDispoPhysique}" />
+						</b:dataTableColumn>
+					</b:dataTable>
+					</b:tab>
+					<b:tab title="Appros proches péremption">
+						<b:dataTable id="datatableStocks" value="#{mbAccueilAdmin.approvisionnementsPeremption}" 
+						var="ligneStock" pdf="false"
+						print="false" excel="false" border="true" info="false"
+						tiny-screen="12" medium-screen="12" large-screen="12"
+						page-length="20" selectionMode="single" responsive="true">
+
+						<b:dataTableColumn
+							headerStyle="text-align: center;vertical-align: middle;">
+							<f:facet name="header">Image: </f:facet>
+							<h:graphicImage
+								value="/pics/articlesImages/#{ligneStock.article.imageMini}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Articles: </f:facet>
+							<h:outputLabel value="#{ligneStock.article.nom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Quantités en stock: </f:facet>
+							<h:outputLabel value="#{ligneStock.quantiteRestante}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Date péremption: </f:facet>
+							<h:outputLabel value="#{ligneStock.datePeremption}"  >
+  								<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+  							</h:outputLabel>
+						</b:dataTableColumn>
+						
+					</b:dataTable>
+					</b:tab>
+					<!-- The next tab shows tabs aren't limited to text. You can put anything in a tab. -->
+					<b:tab title="Commandes en attente">
+						<b:dataTable id="datatableStocks" value="#{mbAccueilAdmin.commandesEnAttente}" 
+						var="ligneCommande" pdf="false"
+						print="false" excel="false" border="true" info="false"
+						tiny-screen="12" medium-screen="12" large-screen="12"
+						page-length="20" selectionMode="single" responsive="true">
+
+						<b:dataTableColumn>
+							<f:facet name="header">Numéro de Commande : </f:facet>
+							<h:outputLabel value="#{ligneCommande.id}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Numéro de CLient : </f:facet>
+							<h:outputLabel value="#{ligneCommande.client.id}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Date de Création : </f:facet>
+							<h:outputLabel value="#{ligneCommande.dateCreation}"/>
+							
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Prix de la Commande : </f:facet>
+							<h:outputLabel value="#{ligneCommande.prixTotal}"/>
+						</b:dataTableColumn>
+					</b:dataTable>
+					</b:tab>
+				</b:tabView>
+			</b:container>
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>

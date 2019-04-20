@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Mise à jour du fournisseur</ui:define>
+
+	<ui:define name="content">
+
+		<h:head>
+
+			<title>Mise à jour fournisseur</title>
+			<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/updateFournisseurAdmin.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>			
+		</h:head>
+		
+		<h:body>
+			<b:row id="banner">
+					<h3>Mise à jour du fournisseur</h3>		
+			</b:row>
+			<f:metadata>
+				<f:event listener="#{mbUpdateFournisseur.init()}" type="preRenderView"></f:event>
+			</f:metadata>
+			
+			<b:container >
+			<b:form id="formFicheFournisseur">
+				<b:container layout="fluid">
+		
+
+					<b:panelGrid columns="1">
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+								<b:inputText value="#{mbFicheFournisseur.fournisseur.nom}"
+									fieldSize="lg">
+									<f:facet name="prepend">
+										<b:icon name="user" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+								<b:inputText
+									value="#{mbFicheFournisseur.fournisseur.complementAdresse}"
+									fieldSize="lg">
+									<f:facet name="prepend">
+										<b:icon name="map-marker" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+								<b:inputText value="#{mbFicheFournisseur.fournisseur.adresse}"
+									fieldSize="lg">
+									<f:facet name="prepend">
+										<b:icon name="map-marker" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+								<b:selectOneMenu
+									value="#{mbUpdateFournisseur.fournisseur.ville}"
+									required="true" labelColMd="5" select="true" field-size="lg">
+									<f:selectItem itemLabel="Ville" itemValue=""
+										noSelectionOption="true" />
+									<f:selectItems value="#{mbUpdateFournisseur.villes}"
+										var="ville" itemValue="#{ville}"
+										itemLabel="#{ville.codePostal} #{ville.nom}" />
+								</b:selectOneMenu>
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+								<b:inputText value="#{mbFicheFournisseur.fournisseur.email}"
+									fieldSize="lg">
+									<f:facet name="prepend">
+										<h:outputText value="@" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+								<b:inputText
+									value="#{mbFicheFournisseur.fournisseur.numeroFixe}"
+									fieldSize="lg">
+									<f:facet name="prepend">
+										<b:icon name="phone-alt" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+
+						<b:row>
+							<b:column tiny-screen="12" medium-screen="12" large-screen="12">
+								<b:inputText
+									value="#{mbFicheFournisseur.fournisseur.numeroPort}"
+									fieldSize="lg">
+									<f:facet name="prepend">
+										<b:icon name="phone" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+
+					</b:panelGrid>
+					<div id="boutonBas">
+					<b:panelGrid columns="3">
+						<b:commandButton value="Enregistrer"
+							action="#{mbUpdateFournisseur.update()}" look="warning" />
+					</b:panelGrid>
+					</div>
+
+				</b:container>
+			</b:form>
+			</b:container>
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+
+
+
+<ui:composition template="/interfaceAdmin/masterPageAdmin.xhtml">
+	<ui:define name="title">Rechercher un client</ui:define>
+
+	<ui:define name="content">
+
+		<h:head>
+			<title>Rechercher un client</title>
+			
+			<link	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"	rel="stylesheet" />
+			<link rel="stylesheet" type="text/css"	href="#{request.contextPath}/css/styleAdmin.css" />
+			<script src="#{request.contextPath}/js/versLeHaut.js"></script>
+		</h:head>
+		<h:body>
+
+					<b:row id="banner">
+							<h3>Liste des clients</h3>
+					</b:row>
+					<h:form id="formRechercheClient">
+			<b:container layout="fluid">
+					<b:dataTable 
+						value="#{mbFindClient.clients}" 
+						var="cl" 
+						excel="false"
+						pdf="false" 
+						print="false" 
+						border="true" 
+						info="false"
+						page-length="20" 
+						selectionMode="single" 
+						responsive="true"
+						onselect="ajax:mbFindClient.onSelect(cl);"
+						paginated="false">
+
+						<b:dataTableColumn>
+							<f:facet name="header">Client</f:facet>
+							<h:outputLabel value="#{cl.nom} #{cl.prenom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Adresse</f:facet>
+							<h:outputLabel value="#{cl.adresse}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Ville</f:facet>
+							<h:outputLabel value="#{cl.ville.codePostal} #{cl.ville.nom}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Téléphone</f:facet>
+							<h:outputLabel value="#{cl.numeroFixe}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Portable</f:facet>
+							<h:outputLabel value="#{cl.numeroPort}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn>
+							<f:facet name="header">Email</f:facet>
+							<h:outputLabel value="#{cl.email}" />
+						</b:dataTableColumn>
+					</b:dataTable>
+				</b:container>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>
